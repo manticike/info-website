@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
 
 app.get('/', (request, response) => {
   response.sendFile('./index.html', { root: __dirname});
@@ -18,7 +19,7 @@ app.use((request, response) => {
   response.sendFile('./404.html', { root: __dirname});
 });
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`My first Express app - listening on port ${PORT}!`);
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
+  console.log(`My first Express app - listening on port ${port}!`);
 });
